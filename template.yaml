@@ -22,8 +22,11 @@ Resources:
         Size: 512
       Environment:
         Variables:
-          SQS_QUEUE_URL: "urlLambda"
-          AWS_REGION: "eu-central-1"
+          SQS_QUEUE_URL: urlLambda
+          AWS_REGION: eu-central-1
+          SQSQUEUEDESTINATIONFAILURE1_QUEUE_NAME: !GetAtt SQSQueueDestinationFailure1.QueueName
+          SQSQUEUEDESTINATIONFAILURE1_QUEUE_ARN: !GetAtt SQSQueueDestinationFailure1.Arn
+          SQSQUEUEDESTINATIONFAILURE1_QUEUE_URL: !Ref SQSQueueDestinationFailure1
       EventInvokeConfig:
         MaximumEventAgeInSeconds: 21600
         MaximumRetryAttempts: 2
@@ -37,17 +40,19 @@ Resources:
             - Effect: Allow
               Action:
                 - sqs:SendMessage
-              Resource: !Sub "arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:UrlNFCe"
+              Resource: !Sub arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:UrlNFCe
             - Effect: Allow
               Action:
                 - logs:CreateLogGroup
-              Resource: !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*"
+              Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*
             - Effect: Allow
               Action:
                 - logs:CreateLogStream
                 - logs:PutLogEvents
               Resource:
-                - !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/urlNota_lambda:*"
+                - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/urlNota_lambda:*
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt SQSQueueDestinationFailure1.QueueName
       RecursiveLoop: Terminate
       SnapStart:
         ApplyOn: PublishedVersions
