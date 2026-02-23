@@ -19,7 +19,7 @@ sam local start-api --env-vars env-vars.json
 
 ## Deploy AWS Lambda
 
-Realizar build padrao no maven e upload de .jar no Lambda 
+Realizar build padrão no maven e upload de .jar no Lambda 
 ```bash 
 mvn clean <install|package>
 ```
