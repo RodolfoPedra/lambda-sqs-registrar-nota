@@ -23,7 +23,6 @@ Resources:
       Environment:
         Variables:
           SQS_QUEUE_URL: urlLambda
-          AWS_REGION: eu-central-1
           SQSQUEUEDESTINATIONFAILURE1_QUEUE_NAME: !GetAtt SQSQueueDestinationFailure1.QueueName
           SQSQUEUEDESTINATIONFAILURE1_QUEUE_ARN: !GetAtt SQSQueueDestinationFailure1.Arn
           SQSQUEUEDESTINATIONFAILURE1_QUEUE_URL: !Ref SQSQueueDestinationFailure1
