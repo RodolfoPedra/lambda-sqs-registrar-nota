@@ -1,0 +1,6 @@
+{
+  "urlNotalambda": {
+    "SQS_QUEUE_URL": "urlLambda",
+    "AWS_REGION": "regiaoLambda"
+  }
+}

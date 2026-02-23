@@ -1,9 +1,9 @@
 .aws-sam
 ./registra-nota-usuario/target
-template.yaml
 .vscode
 .idea
 *.iml
 *.log
 samconfig.toml
 event.json
+env-vars.json
