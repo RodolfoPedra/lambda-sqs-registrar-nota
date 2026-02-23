@@ -1,1 +1,3 @@
 .aws-sam
+./registra-nota-usuario/target
+template.yaml
