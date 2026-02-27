@@ -8,7 +8,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: An AWS Serverless Application Model template describing your function.
 Resources:
-  urlNotalambda:
+  registraNfce:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: registra-nota-usuario
@@ -39,17 +39,17 @@ Resources:
             - Effect: Allow
               Action:
                 - sqs:SendMessage
-              Resource: !Sub arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:UrlNFCe
+              Resource: !Sub arn:aws:sqs:eu-central-1:000000000000:registra-nfce
             - Effect: Allow
               Action:
                 - logs:CreateLogGroup
-              Resource: !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*
+              Resource: !Sub arn:aws:logs:eu-central-1:000000000000:*
             - Effect: Allow
               Action:
                 - logs:CreateLogStream
                 - logs:PutLogEvents
               Resource:
-                - !Sub arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/urlNota_lambda:*
+                - !Sub arn:aws:logs:eu-central-1:000000000000:log-group:/aws/lambda/registraNfce:*
         - SQSSendMessagePolicy:
             QueueName: !GetAtt SQSQueueDestinationFailure1.QueueName
       RecursiveLoop: Terminate
@@ -66,5 +66,5 @@ Resources:
   SQSQueueDestinationFailure1:
     Type: AWS::SQS::Queue
     Properties:
-      QueueName: SQSQueueDestinationFailure1
+      QueueName: registra-nfce
       SqsManagedSseEnabled: true

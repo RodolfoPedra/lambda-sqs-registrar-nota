@@ -5,5 +5,6 @@
 *.iml
 *.log
 samconfig.toml
-event.json
-env-vars.json
+events
+env.json
+./registra-nota-usuario/target
